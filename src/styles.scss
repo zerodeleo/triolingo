@@ -2,3 +2,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.theme-dark {
+    --color-custom-100: 230, 230, 230;
+    --color-custom-200: 210, 210, 210;
+    --color-custom-300: 190, 190, 190;
+    --color-custom-400: 170, 170, 170;
+    --color-custom-500: 150, 150, 150;
+    --color-custom-600: 130, 130, 130;
+    --color-custom-700: 110, 110, 110;
+    --color-custom-800: 90, 90, 90;
+    --color-custom-900: 70, 70, 70;
+}
+
+.theme-light {
+    --color-custom-100: 230, 230, 230;
+    --color-custom-200: 210, 210, 210;
+    --color-custom-300: 190, 190, 190;
+    --color-custom-400: 170, 170, 170;
+    --color-custom-500: 150, 150, 150;
+    --color-custom-600: 130, 130, 130;
+    --color-custom-700: 110, 110, 110;
+    --color-custom-800: 90, 90, 90;
+    --color-custom-900: 70, 70, 70;
+}

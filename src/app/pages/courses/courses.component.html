@@ -1,2 +1,45 @@
-<p>courses works!</p>
-<app-create-course-form></app-create-course-form>
+<!-- Title Section -->
+<section
+  class="flex justify-between items-center flex-col md:flex-row mb-8 text-center md:text-left"
+>
+  <div class="mb-4 md:mb-0">
+    <h1 class="underline text-4xl text-cyan-900">Your Courses</h1>
+    <p class="text-cyan-600">
+      Start Your <span class="underline">Active</span> Learning Today!
+    </p>
+  </div>
+  <button
+    class="flex h-11 bg-cyan-500 items-center justify-center rounded-lg text-cyan-50 px-4"
+    (click)="isCreateCourseModalOpen = true"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6 mr-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z"
+      />
+    </svg>
+    Create Course
+  </button>
+</section>
+<!-- Courses Section -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+  @for (course of courses; track $index) {
+  <app-course-card [course]="course"></app-course-card>
+  } @empty { No courses available. Create one. }
+</section>
+<app-modal
+  [showModal]="isCreateCourseModalOpen"
+  (closeModal)="isCreateCourseModalOpen = false"
+>
+  <app-create-course-form
+    (formSubmit)="isCreateCourseModalOpen = false"
+  ></app-create-course-form>
+</app-modal>

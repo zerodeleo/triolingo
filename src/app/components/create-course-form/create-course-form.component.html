@@ -1,34 +1,100 @@
-<form [formGroup]="courseForm" (ngSubmit)="onSubmit($event)">
-  <h1>{{ courseTitleIcons.join("") }}</h1>
-  <h2>{{ courseTitleText.join(" - ") }}</h2>
-  <!-- Select languages for the course -->
-  <div *ngFor="let courseLanguageSelection of courseLanguageSelections">
-    <label for="{{ courseLanguageSelection.id }}">{{
-      courseLanguageSelection.title
-    }}</label>
-    <select
-      (change)="onCourseLanguageSelection($event)"
-      id="{{ courseLanguageSelection.id }}"
-      formControlName="{{ courseLanguageSelection.id }}"
-    >
-      <option
-        id="{{ language.id }}"
-        *ngFor="let language of languages"
-        [ngValue]="language"
-        [disabled]="selectedLanguages.includes(language.id)"
+<form class="py-4 px-2" [formGroup]="courseForm" (ngSubmit)="onSubmit($event)">
+  <div class="flex flex-col w-full">
+    <!-- Display title for new course -->
+    <div class="text-center">
+      <div class="flex flex-row w-auto">
+        <p class="text-md underline text-xl mb-4 text-cyan-800 tracking-widest">
+          {{
+            courseTitleText.join(" - ").replaceAll("Language", "") ||
+              "Course Title"
+          }}
+        </p>
+      </div>
+    </div>
+    <!-- Select languages for the course -->
+    <div class="flex flex-col w-full">
+      <div
+        class="w-full"
+        *ngFor="let courseLanguageSelection of courseLanguageSelections"
       >
-        {{ language.id.toUpperCase() }} {{ language.icon }}
-      </option>
-    </select>
+        <select
+          class="w-full h-11 px-2 mb-2 text-black-primary bg-cyan-100 text-cyan-600 focus:outline-none text-sm text-ellipsis"
+          (change)="onCourseLanguageSelection($event)"
+          id="{{ courseLanguageSelection.id }}"
+          formControlName="{{ courseLanguageSelection.id }}"
+        >
+          <option [value]="''" selected disabled>
+            Pick Your {{ courseLanguageSelection.title }}
+          </option>
+          <option
+            id="{{ language.id }}"
+            *ngFor="let language of languages"
+            [ngValue]="language"
+            [disabled]="selectedLanguages.includes(language.id)"
+          >
+            {{ language.id.toUpperCase() }} {{ language.icon }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- Toggle privacy -->
+    <div class="flex justify-end items-center">
+      <label
+        for="checked-checkbox"
+        class="ms-2 text-sm font-medium text-cyan-600"
+        >Private Course</label
+      >
+      <input
+        checked
+        id="isPrivate"
+        (change)="togglePrivacy($event)"
+        type="checkbox"
+        value=""
+        class="w-4 h-4 ml-2 text-cyan-600 bg-cyan-100 border-cyan-300 rounded focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-cyan-800 focus:ring-2 dark:bg-cyan-700 dark:border-cyan-600"
+      />
+    </div>
   </div>
-  <!-- Toggle privacy -->
-  <div>
-    <label for="privacyCheckbox">Private Course</label>
-    <input
-      type="checkbox"
-      id="privacyCheckbox"
-      (change)="togglePrivacy($event)"
-    />
+  <!-- Submit form -->
+  <div class="flex w-full justify-center mt-11">
+    <button
+      [disabled]="!courseForm.valid"
+      class="bg-cyan-500 text-cyan-50 flex flex-row items-center h-11 px-6 rounded tracking-widest disabled:opacity-40"
+      type="submit"
+    >
+      <div class="pr-6" *ngIf="courseForm.valid">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m4.5 12.75 6 6 9-13.5"
+          />
+        </svg>
+      </div>
+      <div class="pr-6" *ngIf="!courseForm.valid">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
+          />
+        </svg>
+      </div>
+
+      Create Course
+    </button>
   </div>
-  <button type="submit">Submit</button>
 </form>

@@ -24,8 +24,7 @@ export class CreateCourseFormComponent {
   courseLanguageSelections: ICourseLanguageSelection[] =
     COURSE_LANGUAGE_SELECTIONS;
   selectedLanguages: string[] = [];
-  courseTitleIcons: string[] = ['🏳️', '🏳️', '🏳️'];
-  courseTitleText: string[] = this.courseLanguageSelections.map((l) => l.title);
+  courseTitleText: string[] = this.courseLanguageSelections.map((i) => i.title);
 
   courseForm!: FormGroup;
   fb = inject(FormBuilder);
@@ -54,7 +53,6 @@ export class CreateCourseFormComponent {
     const language = this.languages.find(
       (item) => item.id === selectedLanguageId
     )!;
-    this.courseTitleIcons[index] = language.icon;
     this.courseTitleText[index] = language.title;
   }
 
@@ -65,8 +63,7 @@ export class CreateCourseFormComponent {
 
   onSubmit(event: Event): void {
     event.preventDefault(); // Prevent the default form submission behavior
-    console.log('Submitting');
-    localStorage.setItem('submitted', 'yey');
+    console.log('Submitting TODO:');
     console.log(this.courseForm);
   }
 }

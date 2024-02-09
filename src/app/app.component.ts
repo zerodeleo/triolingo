@@ -11,4 +11,9 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'triolingo';
+  theme = true;
+
+  toggleTheme = () => {
+    this.theme = !this.theme;
+  };
 }

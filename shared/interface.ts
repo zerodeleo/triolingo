@@ -9,3 +9,17 @@ export interface ICourseLanguageSelection {
   title: string;
   selected?: string;
 }
+
+export interface ICourse {
+  title: string;
+  languagesIcons: string[];
+  id: string;
+  languagesIds: string[];
+  languagesTitles: string[];
+  isPrivate: boolean;
+}
+
+export interface ILecture {
+  title: string;
+  id: string;
+}
