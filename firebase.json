@@ -1,0 +1,11 @@
+{
+  "hosting": [
+    {
+      "target": "triolingo",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "europe-west1"
+      }
+    }
+  ]
+}

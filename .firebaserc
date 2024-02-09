@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "triolingo-c3067": {
+      "hosting": {
+        "triolingo": [
+          "triolingo-c3067"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "triolingo-c3067"
+  }
+}

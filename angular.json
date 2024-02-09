@@ -99,8 +99,28 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "triolingo:build:production",
+              "serveTarget": "triolingo:serve:production"
+            },
+            "development": {
+              "buildTarget": "triolingo:build:development",
+              "serveTarget": "triolingo:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "414300f2-eb14-452c-8c58-2c9c481c54df"
   }
 }

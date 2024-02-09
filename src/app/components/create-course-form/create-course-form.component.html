@@ -1,0 +1,34 @@
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit($event)">
+  <h1>{{ courseTitleIcons.join("") }}</h1>
+  <h2>{{ courseTitleText.join(" - ") }}</h2>
+  <!-- Select languages for the course -->
+  <div *ngFor="let courseLanguageSelection of courseLanguageSelections">
+    <label for="{{ courseLanguageSelection.id }}">{{
+      courseLanguageSelection.title
+    }}</label>
+    <select
+      (change)="onCourseLanguageSelection($event)"
+      id="{{ courseLanguageSelection.id }}"
+      formControlName="{{ courseLanguageSelection.id }}"
+    >
+      <option
+        id="{{ language.id }}"
+        *ngFor="let language of languages"
+        [ngValue]="language"
+        [disabled]="selectedLanguages.includes(language.id)"
+      >
+        {{ language.id.toUpperCase() }} {{ language.icon }}
+      </option>
+    </select>
+  </div>
+  <!-- Toggle privacy -->
+  <div>
+    <label for="privacyCheckbox">Private Course</label>
+    <input
+      type="checkbox"
+      id="privacyCheckbox"
+      (change)="togglePrivacy($event)"
+    />
+  </div>
+  <button type="submit">Submit</button>
+</form>
