@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { ModalComponent } from '../../components/layout/modal/modal.component';
-import { ICourse, ILecture } from '../../../../shared/interface';
-import { COURSES, LECTURES } from '../../../../shared/data/dummy-data';
+import { ICourse, ILecture } from '../../shared/interface';
+import { COURSES, LECTURES } from '../../shared/data/dummy-data';
 
 @Component({
   selector: 'app-course-detail',

@@ -1,9 +1,6 @@
-import {
-  ICourseLanguageSelection,
-  ILanguageCode,
-} from '../../../shared/interface';
+import { ICourseLanguageSelection, ILanguage } from '../shared/interface';
 
-export const LANGUAGE_CODES: ILanguageCode[] = [
+export const LANGUAGE_CODES: ILanguage[] = [
   { id: 'af', icon: '🇿🇦', title: 'Afrikaans' },
   { id: 'ar', icon: '🇸🇦', title: 'Arabic' },
   { id: 'bg', icon: '🇧🇬', title: 'Bulgarian' },
@@ -49,7 +46,7 @@ export const LANGUAGE_CODES: ILanguageCode[] = [
 ];
 
 export const COURSE_LANGUAGE_SELECTIONS: ICourseLanguageSelection[] = [
-  { id: 'nativeLanguage', title: 'Native Language' },
+  { id: 'firstLanguage', title: 'First Language' },
   { id: 'secondLanguage', title: 'Second Language' },
   { id: 'thirdLanguage', title: 'Third Language' },
 ];

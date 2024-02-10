@@ -1,4 +1,4 @@
-export type TLanguageCode =
+export type TLanguage =
   | 'af'
   | 'ar'
   | 'bg'
@@ -44,6 +44,6 @@ export type TLanguageCode =
   | 'zh';
 
 export type TCourseLanguageSelection =
-  | 'nativeLanguage'
+  | 'firstLanguage'
   | 'secondLanguage'
   | 'thirdLanguage';

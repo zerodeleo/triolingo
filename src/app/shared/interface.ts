@@ -1,5 +1,7 @@
-export interface ILanguageCode {
-  id: string;
+import { TLanguage } from './types';
+
+export interface ILanguage {
+  id: TLanguage;
   icon: string;
   title: string;
 }
@@ -7,16 +9,18 @@ export interface ILanguageCode {
 export interface ICourseLanguageSelection {
   id: string;
   title: string;
-  selected?: string;
 }
 
 export interface ICourse {
-  title: string;
-  languagesIcons: string[];
   id: string;
-  languagesIds: string[];
-  languagesTitles: string[];
+  languages: ILanguage[];
+}
+
+export interface ICourseForm {
   isPrivate: boolean;
+  firstLanguage: ILanguage;
+  secondLanguage: ILanguage;
+  thirdLanguage: ILanguage;
 }
 
 export interface ILecture {
