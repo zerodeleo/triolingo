@@ -5,6 +5,7 @@ import {
   collection,
   getDocs,
   collectionData,
+  getDoc,
 } from '@angular/fire/firestore';
 import { ICourse, ICourseForm } from '../../../shared/interface';
 import { Injectable } from '@angular/core';
@@ -19,9 +20,17 @@ export class CourseService {
 
   constructor(private firestore: Firestore) {}
 
+  async getCourse(id: string) {
+    const i = id.replaceAll('-', ',');
+    const courseDocRef = doc(this.firestore, `courses/${i}`);
+    const courseDataSnapshot = await getDoc(courseDocRef);
+    const courseData = courseDataSnapshot.data();
+    return courseData;
+  }
+
   getCourses() {
-    const courseRef = collection(this.firestore, 'courses');
-    const courseData = collectionData(courseRef) as Observable<ICourse[]>;
+    const coursesRef = collection(this.firestore, 'courses');
+    const courseData = collectionData(coursesRef) as Observable<ICourse[]>;
     return courseData;
   }
 

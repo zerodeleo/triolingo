@@ -38,14 +38,18 @@ export const COURSES: ICourse[] = [
 export const LECTURES: ILecture[] = [
   {
     title: 'The Verb Game',
-    id: '1',
+    id: 'the-verb-game',
   },
   {
-    title: 'The Words Game',
-    id: '2',
+    title: 'The Word Game',
+    id: 'the-word-game',
   },
   {
-    title: 'The Phrases Game',
-    id: '3',
+    title: 'The Phrase Game',
+    id: 'the-phrase-game',
+  },
+  {
+    title: 'The Chat Bot',
+    id: 'the-chat-bot',
   },
 ];
