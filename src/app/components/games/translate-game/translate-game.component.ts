@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { TWordMap } from '../../../shared/types';
 import { ILanguage } from '../../../shared/interface';
 import { FormsModule } from '@angular/forms';
+import { generateUniqueRandomNumber } from '../../../utils';
 
 @Component({
   selector: 'app-translate-game',
@@ -13,26 +14,37 @@ import { FormsModule } from '@angular/forms';
 })
 export class TranslateGameComponent {
   @Input() texts: Partial<TWordMap[]> = [];
-  @Input() categories: string[] = [];
   @Input() languages!: ILanguage[];
+  selectedCategory!: string;
   toggleAnswer = true;
   typedText = '';
   textIndex = 0;
+  arrayOfRandomTextIndex: number[] = [];
   text: Partial<TWordMap> = {};
 
   constructor() {}
 
   ngOnChanges() {
     if (this.texts.length) {
-      this.text = this.texts[this.textIndex]!;
+      this.updateTextRandom();
     }
+  }
+
+  private updateTextRandom() {
+    const { randomNumber, arr } = generateUniqueRandomNumber(
+      this.arrayOfRandomTextIndex,
+      0,
+      this.texts.length - 1
+    );
+    this.arrayOfRandomTextIndex = arr;
+    this.text = this.texts[randomNumber]!;
   }
 
   private updateText() {
     if (this.textIndex === this.texts.length) {
       this.textIndex = 0;
     }
-    this.text = this.texts[this.textIndex]!;
+    this.updateTextRandom();
     this.typedText = '';
   }
 
