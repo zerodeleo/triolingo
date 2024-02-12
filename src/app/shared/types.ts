@@ -1,3 +1,5 @@
+import { IOpenAIPromptSystem, IOpenAIPromptUser } from './interface';
+
 export type TLanguage =
   | 'af'
   | 'ar'
@@ -47,3 +49,9 @@ export type TCourseLanguageSelection =
   | 'firstLanguage'
   | 'secondLanguage'
   | 'thirdLanguage';
+
+export type IOpenAIPrompt = [IOpenAIPromptSystem, IOpenAIPromptUser];
+
+export type TWordMap = {
+  [key in TLanguage]: string;
+};

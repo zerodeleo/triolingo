@@ -1,8 +1,5 @@
-<div
-  [ngClass]="theme ? 'theme-light' : 'theme-dark'"
-  class="bg-cyan-50 min-h-screen flex justify-between flex-col"
->
-  <header>
+<div [ngClass]="theme ? 'theme-light' : 'theme-dark'" class="bg-cyan-50">
+  <header class="relative">
     <nav class="container mx-auto p-6 flex justify-between items-center">
       <a class="text-xl font-bold text-cyan-800" routerLink="/">Triolingo</a>
       <div class="flex items-center space-x-4">
@@ -12,7 +9,7 @@
       </div>
     </nav>
   </header>
-  <main>
+  <main class="min-h-screen">
     <router-outlet></router-outlet>
   </main>
   <footer class="text-cyan-600 body-font w-full">

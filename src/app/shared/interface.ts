@@ -1,4 +1,4 @@
-import { TLanguage } from './types';
+import { TLanguage, TWordMap } from './types';
 
 export interface ILanguage {
   id: TLanguage;
@@ -26,4 +26,19 @@ export interface ICourseForm {
 export interface ILecture {
   title: string;
   id: string;
+}
+
+export interface IOpenAIPromptSystem {
+  role: 'system';
+  content: string;
+}
+
+export interface IOpenAIPromptUser {
+  role: 'user';
+  content: string;
+}
+
+export interface IWords {
+  id: string;
+  words: Partial<TWordMap[]>;
 }
