@@ -11,12 +11,12 @@
       >
         <label
           [class.opacity-0]="!selectedLanguages[index]"
-          class="text-cyan-300"
+          class="text-stone-300"
           for="{{ courseLanguageSelection.id }}"
           >Your {{ courseLanguageSelection.title }}</label
         >
         <select
-          class="w-full h-11 px-2 mb-2 text-black-primary bg-cyan-100 text-cyan-600 focus:outline-none text-sm text-ellipsis"
+          class="w-full h-11 px-2 mb-2 text-black-primary bg-stone-100 text-stone-600 focus:outline-none text-sm text-ellipsis"
           (change)="onCourseLanguageSelection($event)"
           id="{{ courseLanguageSelection.id }}"
           formControlName="{{ courseLanguageSelection.id }}"
@@ -30,7 +30,7 @@
             [ngValue]="language"
             [disabled]="selectedLanguagesIds.includes(language.id)"
           >
-            {{ language.id.toUpperCase() }} {{ language.icon }}
+            {{ language.title }} {{ language.icon }}
           </option>
         </select>
       </div>
@@ -40,7 +40,7 @@
   <div class="flex w-full justify-center">
     <button
       [disabled]="!courseForm.valid"
-      class="bg-cyan-500 text-cyan-50 flex flex-row items-center h-11 px-6 rounded tracking-widest disabled:opacity-40"
+      class="bg-stone-500 text-stone-50 flex flex-row items-center h-11 px-6 rounded tracking-widest disabled:opacity-40"
       type="submit"
     >
       <div class="pr-6" *ngIf="courseForm.valid">

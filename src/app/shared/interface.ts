@@ -26,6 +26,7 @@ export interface ICourseForm {
 export interface ILecture {
   title: string;
   id: string;
+  description: string;
 }
 
 export interface IOpenAIPromptSystem {
@@ -40,5 +41,10 @@ export interface IOpenAIPromptUser {
 
 export interface IWords {
   id: string;
+  phrases?: {
+    past_tense?: Partial<TWordMap[]>;
+    future_tense?: Partial<TWordMap[]>;
+    present_tense?: Partial<TWordMap[]>;
+  };
   words: Partial<TWordMap[]>;
 }

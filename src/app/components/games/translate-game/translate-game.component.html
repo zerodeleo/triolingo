@@ -1,4 +1,4 @@
-<div *ngIf="text" class="tracking-widest">
+<div *ngIf="text && languages.length" class="tracking-widest">
   <div class="flex flex-col h-96 text-center w-full text-2xl justify-evenly">
     <div>
       <p>{{ languages[0].icon }}</p>
@@ -9,7 +9,7 @@
     <div>
       <p>{{ languages[1].icon }}</p>
       <input
-        class="text-center bg-transparent placeholder:text-cyan-200 w-full"
+        class="text-center bg-transparent placeholder:text-stone-200 w-full"
         type="text"
         placeholder="Write text in {{ languages[1].title }}"
         [(ngModel)]="typedText"

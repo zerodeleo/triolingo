@@ -1,15 +1,17 @@
 <!-- Title Section -->
 <section
-  class="flex justify-between items-center flex-col h-96 mb-8 text-center md:text-left"
+  class="flex justify-between items-center flex-col h-96 mb-8 text-center md:text-left mt-44"
 >
-  <div class="mb-4 md:mb-0">
-    <h1 class="underline text-4xl text-cyan-900">Available Courses</h1>
-    <p class="text-cyan-600">
+  <div class="md:mb-0">
+    <h1 class="underline text-4xl text-stone-800 font-protest">
+      Available Courses
+    </h1>
+    <p class="text-stone-600 font-protest">
       Start Your <span class="underline">Active</span> Learning Today!
     </p>
   </div>
   <button
-    class="flex h-11 bg-cyan-500 items-center justify-center rounded-lg text-cyan-50 px-4"
+    class="flex h-11 bg-stone-500 items-center justify-center rounded-lg text-stone-50 px-4"
     (click)="isCreateCourseModalOpen = true"
   >
     <svg
@@ -32,7 +34,7 @@
   <p class="text-xl">Browse through our courses:</p>
 </section>
 <!-- Courses Section -->
-<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+<section class="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-8 mx-8">
   @for (course of courses$ | async; track $index) {
   <app-course-card [course]="course"></app-course-card>
   } @empty { No courses available. Create one. }

@@ -21,7 +21,7 @@ export class TheWordGameComponent implements OnInit {
   categories!: string[];
   route!: any;
   selectedCategory!: string;
-  languages!: ILanguage[];
+  languages: ILanguage[] = [];
   isGameModalOpen = false;
 
   constructor(

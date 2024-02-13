@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { ILecture } from '../../shared/interface';
+import { ILanguage, ILecture } from '../../shared/interface';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class LectureCardComponent implements OnInit {
   @Input() lecture!: ILecture;
+  @Input() languages!: ILanguage[];
   route!: string;
   lectureId!: string;
 

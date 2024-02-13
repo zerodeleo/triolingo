@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { ModalComponent } from '../../components/layout/modal/modal.component';
-import { ICourse, ILecture } from '../../shared/interface';
+import { ICourse, ILanguage, ILecture } from '../../shared/interface';
 import { COURSES, LECTURES } from '../../shared/data/dummy-data';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../../core/services/course/course.service';
 import { LectureCardComponent } from '../../components/lecture-card/lecture-card.component';
+import { LANGUAGE_CODES } from '../../constants';
 
 @Component({
   selector: 'app-course-detail',
@@ -17,6 +18,7 @@ import { LectureCardComponent } from '../../components/lecture-card/lecture-card
 export class CourseDetailComponent implements OnInit {
   course!: ICourse | null;
   route!: string;
+  languages!: ILanguage[];
   isLoadingCourse = false;
   lectures: ILecture[] = LECTURES;
   constructor(
@@ -26,6 +28,10 @@ export class CourseDetailComponent implements OnInit {
 
   async ngOnInit() {
     const id = this.activatedRoute.snapshot.params['id'];
+    const ids = id.split('-');
+    this.languages = LANGUAGE_CODES.filter((language) =>
+      ids.includes(language.id)
+    );
     this.course = (await this.courseService.getCourse(id)) as ICourse;
   }
 }

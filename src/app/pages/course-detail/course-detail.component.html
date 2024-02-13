@@ -1,12 +1,27 @@
-<div *ngIf="course">
-  <p *ngFor="let language of course.languages">
-    {{ language.title }}
+<section *ngIf="course" class="text-center text-stone-700 mt-44">
+  <p class="max-w-lg mx-auto text-2xl text-stone-500 mb-10 leading-loose">
+    <span class="font-protest tracking-widest text-stone-600"
+      >We'll do <span class="underline">everything</span> we can</span
+    >
+    to help you reach your goal of learning
+    <span *ngFor="let language of course.languages; let index = index">
+      {{ index === course.languages.length - 1 ? "&" : "" }}
+      {{ language.title }} </span
+    >. To do so, we've created games for you.
   </p>
-  <section
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8"
-  >
-    @for (lecture of lectures; track $index) {
-    <app-lecture-card [lecture]="lecture"></app-lecture-card>
-    }
-  </section>
-</div>
+  <p *ngFor="let language of course.languages">{{ language.icon }}</p>
+  <br />
+  <br />
+  <h2 class="text-2xl font-protest text-stone-400">Our Games:</h2>
+  <br />
+</section>
+<section
+  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 grid-rows-auto h-auto"
+>
+  @for (lecture of lectures; track $index) {
+  <app-lecture-card
+    [languages]="languages"
+    [lecture]="lecture"
+  ></app-lecture-card>
+  }
+</section>

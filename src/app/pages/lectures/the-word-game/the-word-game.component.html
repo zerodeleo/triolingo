@@ -1,40 +1,45 @@
-<section>
+<section *ngIf="languages.length">
   <div
-    class="text-center leading-10 text-cyan-700 flex flex-col tracking-widest max-w-lg mx-auto"
+    class="text-center text-stone-700 grid tracking-widest max-w-lg mx-auto mt-44"
   >
-    <h1 class="text-4xl underline text-cyan-800">The Word Game</h1>
-    <p class="text-cyan-400">Welcome to the Word Game!</p>
+    <h1 class="text-4xl underline text-stone-600 font-protest">
+      The Word Game
+    </h1>
+    <p class="text-stone-400 font-protest mb-8">Welcome to the Word Game!</p>
+    <div class="mb-8">
+      <p *ngFor="let language of languages">{{ language.icon }}</p>
+    </div>
+    <button
+      (click)="isGameModalOpen = true"
+      class="bg-stone-50 pt-2 text-center w-full text-stone-900 underline text-3xl mb-8"
+    >
+      <p class="animate-pulse mb-8">Play!</p>
+    </button>
     <p>
       Here you have the ability to practice your vocabulary by playing a simple
       word game. You will be presented with a word in
-      {{ languages[0].icon }}{{ languages[0].title }} and {{ languages[2].icon
-      }}{{ languages[2].title }} and your goal is to translate it to
-      {{ languages[1].icon }}{{ languages[1].title }}.
+      {{ languages[0].title }} and {{ languages[2].title }} and your goal is to
+      translate it to {{ languages[1].title }}.
     </p>
     <br />
     <p>What language do you want to translate to?</p>
     <div>
-      <select [selectedIndex]="1" (change)="onChangeLanguage($event)">
+      <select
+        class="bg-transparent"
+        [selectedIndex]="1"
+        (change)="onChangeLanguage($event)"
+      >
         <option *ngFor="let language of languages; let i = index" [value]="i">
           {{ language.icon }} {{ language.title }}
         </option>
       </select>
     </div>
-    <br />
-    <br />
-    <br />
-    <button
-      (click)="isGameModalOpen = true"
-      class="text-cyan-900 underline text-6xl"
-    >
-      Play!
-    </button>
   </div>
 </section>
 <!-- The Game -->
 <app-modal [showModal]="isGameModalOpen" (closeModal)="isGameModalOpen = false">
-  <div class="flex flex-col min-h-96 text-cyan-700">
-    <div class="text-center h-32 items-center flex justify-center">
+  <div class="flex flex-col text-stone-700">
+    <div class="text-center items-center flex justify-center">
       <select
         class="px-4 py-2 bg-transparent text-center uppercase text-3xl"
         (change)="onCategorySelect($event)"

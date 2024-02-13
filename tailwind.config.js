@@ -2,6 +2,10 @@
 export const content = ["./src/**/*.{html,ts}"];
 export const theme = {
   extend: {
+    fontFamily: {
+      protest: ['"Protest Revolution"', "sans-serif"],
+      sans: ["Montserrat", "sans-serif"],
+    },
     colors: {
       custom: {
         100: ({ opacityVariable, opacityValue }) => {
